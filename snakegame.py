@@ -117,9 +117,7 @@ sound_off_rect.top = 665
 
 sound = pygame.mixer.Sound("sounds/bgm.wav")
 sound.set_volume(0.1)
-
-
- 
+sound_playing = 1
 
 # ----- [ 전역 ] -----
 
@@ -207,7 +205,11 @@ def gameover(surface):
                     sys.exit()
                 if event.key == pygame.K_r:
                     waiting = False
-                    sound.play(-1)
+                    if(sound_playing == 1):
+                        sound.play(-1)
+                    else:
+                        sound.play(-1)
+                        pygame.mixer.pause()
 
 def startScreen(surface):
     main_image = pygame.image.load("images/main.png")
@@ -244,7 +246,6 @@ screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
 
 startScreen(screen)
-sound_playing = 1
 sound.play(-1)
 
 while run:
