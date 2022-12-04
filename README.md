@@ -30,3 +30,17 @@
 <img src = https://user-images.githubusercontent.com/113351553/205494198-11c468ee-335b-4ecb-a533-6200a0c52ab7.png alt = "음식 획득한 후">
 
 * <h6>뱀이 맵의 끝을 통과했을 때</h6>
+<img src = https://user-images.githubusercontent.com/113351553/205495785-a150d935-15f6-44d1-b73f-997cd054d5f2.png alt = "벽 통과시">
+   뱀이 맵의 끝 부분에 도달할 경우 사망하는 것이 아닌 벽을 통과한다.<br>
+   맵을 통과하면 반대편의 시작부분에서 뱀이 등장한다.<br>
+   ※속도가 올라갈수록 방향전환이 즉시 되지 않는 경우가 많아서 통과하도록 설정했다.<br>
+   
+* <h6>게임 오버시</h6>
+<img src = https://user-images.githubusercontent.com/113351553/205496188-752b275f-8c3b-44c2-9ebd-d4ac8b0a1bb2.png alt = "게임 오버시">
+   뱀이 자신의 몸에 닿게되면 게임 오버된다.<br>
+   게임 오버시에는 화면이 게임 오버화면으로 전환되며 최종 점수가 출력된다.<br>
+   안내 문구도 출력되는데 문구처럼 r을 누르면 게임 재시작을, q를 누르면 프로그램을 종료한다.<br>
+   
+   
+   
+   
