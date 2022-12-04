@@ -1,3 +1,7 @@
+
+>**This project is licensed under the terms of the GPL v3 license**<br>
+>**이 프로젝트는 GPL v3 라이센스 조건에 따라 라이센스가 부여됩니다.**
+
 <h1>:snake:SNAKE GAME:snake:</h1>
 <hr>
 <h3>스네이크 게임이란:question:</h3>
