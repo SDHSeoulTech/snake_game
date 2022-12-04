@@ -1,1 +1,1 @@
-<h1>SNAKE GAME</h1>
+:raised_hands:<h1>SNAKE GAME</h1>
