@@ -43,8 +43,14 @@
    
  <hr>
  <h3>참조한 블로그</h3>
- 본 코드는 [Blog](https://digiconfactory.tistory.com/entry/파이썬-게임-만들기-스네이크-게임-만들기-파이게임-모듈-스네이크-게임-기본) 를 참조하여 제작하였다.
-   [Blog](https://digiconfactory.tistory.com/entry/파이썬-게임-만들기-스네이크-게임-만들기-파이게임-모듈-스네이크-게임-기본)
-   [Blog](https://digiconfactory.tistory.com/entry/파이썬-게임-만들기-스네이크-게임-만들기-파이게임-모듈-스네이크-게임-기본)
-   [Blog](https://digiconfactory.tistory.com/entry/파이썬-게임-만들기-스네이크-게임-만들기-파이게임-모듈-스네이크-게임-기본)
-[Blog](https://digiconfactory.tistory.com/entry/파이썬-게임-만들기-스네이크-게임-만들기-파이게임-모듈-스네이크-게임-기본)
+ 참조한 블로그 링크 : https://digiconfactory.tistory.com/entry/파이썬-게임-만들기-스네이크-게임-만들기-파이게임-모듈-스네이크-게임-기본
+ <br>
+ 게임의 전체적인 코드는 링크에서 따왔으며 직접 추가한 코드는<br>
+ 
+ * 게임 메인화면 부분
+ * 게임 사운드 재생 및 사운드 이미지 출력
+ * 게임 오버화면 부분 
+ 
+ 입니다.
+ 
+   
