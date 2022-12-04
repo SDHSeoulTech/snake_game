@@ -43,7 +43,7 @@
    
  <hr>
  <h3>참조한 블로그</h3>
- 본 코드는 [이 블로그](https://digiconfactory.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B2%8C%EC%9E%84-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%8A%A4%EB%84%A4%EC%9D%B4%ED%81%AC-%EA%B2%8C%EC%9E%84-%EB%A7%8C%EB%93%A4%EA%B8%B0-%ED%8C%8C%EC%9D%B4%EA%B2%8C%EC%9E%84-%EB%AA%A8%EB%93%88-%EC%8A%A4%EB%84%A4%EC%9D%B4%ED%81%AC-%EA%B2%8C%EC%9E%84-%EA%B8%B0%EB%B3%B8)를 참조하여 제작하였다.
+ 본 코드는 [이 블로그](https://digiconfactory.tistory.com/entry/파이썬-게임-만들기-스네이크-게임-만들기-파이게임-모듈-스네이크-게임-기본)를 참조하여 제작하였다.
    
    
    
