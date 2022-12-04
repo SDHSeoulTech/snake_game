@@ -1,1 +1,1 @@
-#SNAKE GAME
+<h1>SNAKE GAME</h1>
