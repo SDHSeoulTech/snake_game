@@ -60,8 +60,8 @@ class Snake:
         x, y = self.direction
         next = ((head[0] + (x*GRID)) % WINDOW_WIDTH, (head[1] + (y*GRID)) % WINDOW_HEIGHT)
         if next in self.positions[2:]:
-            self.create_snake()
             gameover(surface)
+            self.create_snake()
         else:
             self.positions.insert(0, next)
             if len(self.positions) > self.length:
@@ -101,6 +101,25 @@ class Food:
     def draw_food(self, surface):
         draw_object(surface, self.color, self.position)
 
+# ----- [ 사운드 ] -----
+pygame.mixer.init()
+sound_on_image = pygame.image.load("images/sound-on.png")
+sound_on_image = pygame.transform.scale(sound_on_image,(50,50))
+sound_on_rect = pygame.Rect(sound_on_image.get_rect())
+sound_on_rect.left = 665
+sound_on_rect.top = 665
+
+sound_off_image = pygame.image.load("images/sound-off.png")
+sound_off_image = pygame.transform.scale(sound_off_image,(50,50))
+sound_off_rect = pygame.Rect(sound_off_image.get_rect())
+sound_off_rect.left = 665
+sound_off_rect.top = 665
+
+sound = pygame.mixer.Sound("sounds/bgm.wav")
+sound.set_volume(0.1)
+
+
+ 
 
 # ----- [ 전역 ] -----
 
@@ -137,20 +156,65 @@ def position_check(snake, food_group):
 
 def show_info(surface, snake, speed):
     font = pygame.font.SysFont('malgungothic',35)
-    image = font.render(f' 점수 : {game_score} 뱀길이: {snake.length} LV: {int(speed//2)} ', True, BLUE)
+    image = font.render(f' 점수 : {game_score} 속도 : {speed} ', True, BLUE)
     pos = image.get_rect()
-    pos.move_ip(320,20)
-    pygame.draw.rect(image, BLACK,(pos.x-320, pos.y-20, pos.width, pos.height), 2)
+    pos.move_ip(20,20)
+    pygame.draw.rect(image , BLACK,(pos.x-20, pos.y-20, pos.width, pos.height), 2)
     surface.blit(image, pos)
 
+def wait_for_key(self):
+    waiting = True
+    while waiting:
+        clock.tick(60)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                waiting = False
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+               waiting = False
+
 def gameover(surface):
-    font = pygame.font.SysFont('malgungothic',50)
-    image = font.render('GAME OVER', True, BLACK)
-    pos = image.get_rect()
-    pos.move_ip(120,220)
-    surface.blit(image, pos)
+    sound.stop()
+    gameover_image = pygame.image.load("images/game_over.png")
+    font = pygame.font.SysFont('malgungothic',35)
+    image1 = font.render(f'Your score is {game_score}', True, BLACK)
+    pos1 = image1.get_rect()
+    pos1.move_ip(230,500)
+    image2 = font.render(f'Press r to restart game', True, GREEN2)
+    pos2 = image2.get_rect()
+    pos2.move_ip(60,600)
+    image3 = font.render(f'Press q to quit the game', True, GREEN2)
+    pos3 = image3.get_rect()
+    pos3.move_ip(60,640)
+    surface.blit(gameover_image, (0,0))
+    surface.blit(image1,pos1)
+    surface.blit(image2,pos2)
+    surface.blit(image3,pos3)
     pygame.display.update()
-    time.sleep(2)
+    waiting = True
+    while waiting:
+        clock.tick(60)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                waiting = False
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    waiting = False
+                    pygame.quit()
+                    sys.exit()
+                if event.key == pygame.K_r:
+                    waiting = False
+                    sound.play(-1)
+
+def startScreen(surface):
+    main_image = pygame.image.load("images/main.png")
+    surface.blit(main_image,(0,0))
+    pygame.display.update()
+    wait_for_key(surface)
+
 
 player = Snake()
 run = True
@@ -179,6 +243,10 @@ pygame.display.set_caption('SNAKE GAME')
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
 
+startScreen(screen)
+sound_playing = 1
+sound.play(-1)
+
 while run:
 
     for event in pygame.event.get():
@@ -187,6 +255,14 @@ while run:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
                 run = False
+            if event.key == pygame.K_m:
+                if(sound_playing == 1):
+                    pygame.mixer.pause()
+                    sound_playing = 0
+                else:
+                    pygame.mixer.unpause()
+                    sound_playing = 1
+
             if event.key == pygame.K_UP:
                 player.game_control(NORTH)
             if event.key == pygame.K_DOWN:
@@ -202,11 +278,16 @@ while run:
     player.draw_snake(screen)
     draw_food_group(food_group, screen)
     # food.draw_food(screen)
-    speed = player.length/2
+    speed = 0.75 + player.length/4
     show_info(screen, player, speed)
+    if sound_playing == 1:
+        screen.blit(sound_on_image, sound_on_rect)
+    else:
+        screen.blit(sound_off_image, sound_off_rect)
     pygame.display.flip()
     pygame.display.update()
     clock.tick(5+speed)
+    
 
 # ----- [ 파이게임 종료 ] -----
 
